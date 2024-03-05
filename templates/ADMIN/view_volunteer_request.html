@@ -1,0 +1,52 @@
+{% extends "ADMIN/admin_index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+  <style>
+     th {background-color: dodgerblue;text-align: center}
+
+ </style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+
+<table width="200" class="table table-hover ">
+  <tr>
+    <th scope="col">SL</th>
+    <th scope="col">DATE</th>
+      <th scope="col">TYPE</th>
+    <th scope="col">USER</th>
+      <th scope="col">STATUS</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.date }}</td>
+    <td>{{ i.type }}</td>
+    <td>{{ i.USER.name }}</td>
+
+      <td>
+          {% if i.status == "pending" %}
+
+               <a href="/approve_volunteer/{{ i.id }}#aa" class="btn btn-success mt- " style="height: 60%; width: 60%;">Approve</a>
+               <a href="/reject_volunteer/{{ i.id }}#aa" class="btn btn-danger mt-1" style="height: 60%; width: 60%;">Reject</a>
+
+        {% else %}
+            {{ i.status }}
+
+
+          {% endif %}
+</td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+</html>
+{% endblock %}
+

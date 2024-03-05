@@ -1,0 +1,48 @@
+{% extends "CARETAKER/caretaker_index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+     <style>
+     th {background-color: dodgerblue;text-align: center}
+     table {box-shadow:wheat }
+ </style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+
+<table width="200" class="table table-hover ">
+     <tr>
+      <th scope="col">SL </th>
+      <th scope="col">PATIENT NAME</th>
+      <th scope="col">AGE</th>
+      <th scope="col">MEDICAL HISTORY</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col"></th>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.USER.patient_name }}</td>
+      <td>{{ i.USER.age }}</td>
+      <td>{{ i.USER.medical_history }}</td>
+      <td>{{ i.USER.house }}<br> {{ i.USER.post }} <br> {{ i.USER.pincode }} <br> {{ i.USER.place }}</td>
+     <td><a href="/add_daily_report_view/{{ i.USER.id }}#cc" class="btn btn-success mb-1" style="width: 100%">Add Report</a>
+     <p><a href="/view_daily_report/{{ i.USER.id }}#cc" class="btn btn-warning mb-1" style="width: 100%">View Report</a> </p>
+     <p><a href="/reminder_setting_view/{{ i.USER.id }}#cc" class="btn btn-success mb-1" style="width: 100%">Add Reminder </a> </p>
+     <p><a href="/view_reminder/{{ i.USER.id }}#cc" class="btn btn-warning" style="width: 100%">View Reminder</a> </p></td>
+
+
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

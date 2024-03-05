@@ -1,0 +1,48 @@
+{% extends "ADMIN/admin_index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+     th {background-color: dodgerblue;text-align: center}
+
+ </style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+</form>
+<table width="200" class="table table-hover ">
+  <tr>
+    <th scope="col">SL</th>
+    <th scope="col">DATE</th>
+    <th scope="col">STATUS</th>
+    <th scope="col">TYPE</th>
+    <th scope="col">USER</th>
+    <th scope="col">CARETAKER</th>
+    <th scope="col"></th>
+  </tr>
+    {% for i in data %}
+{#        {% if i.status == "approved" %}#}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.date }}</td>
+    <td>{{ i.status }}</td>
+    <td>{{ i.type }}</td>
+    <td>{{ i.USER.name }} <br> {{ i.USER.email }} <br> {{ i.USER.phone }} <br></td>
+    <td>{{ i.CARETAKER.name }}</td>
+      <td>
+          <a href="/view_report/{{ i.USER.id }}#aa"  class="btn btn-success" >Report</a>
+
+      </td>
+  </tr>
+{#        {% endif %}#}
+    {% endfor %}
+
+</table>
+</body>
+</html>
+{% endblock %}

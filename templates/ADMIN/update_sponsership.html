@@ -1,0 +1,60 @@
+{% extends "ADMIN/admin_index.html" %}
+{% block body %}
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+     th {text-align: center}
+     table {box-shadow:wheat }
+ </style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/update_sponsorship_view_post/{{ data.id }}">
+    {% csrf_token %}
+<table width="200" class="table table-hover ">
+
+    <tr>
+      <th scope="row">PATIENT_NAME</th>
+      <td>
+      <input type="text" name="textfield" id="textfield" value="{{ data.patient }}" class="form-control" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">HOUSE_NAME</th>
+      <td>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data.house_name }}" class="form-control" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">POST</th>
+      <td>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data.postal }}" class="form-control" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">PIN</th>
+      <td>
+      <input type="text" name="textfield4" id="textfield4" value="{{ data.pin }}" class="form-control" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">MEDICAL_HISTORY</th>
+      <td>
+      <textarea name="textarea" id="textarea" cols="35" rows="3" class="form-control" required> {{ data.medical_history }}</textarea></td>
+    </tr>
+    <tr>
+      <th scope="row">NEEDS</th>
+      <td>
+      <input type="text" name="textfield6" id="textfield6" value="{{ data.need}}"  class="form-control" required /></td>
+    </tr>
+    <tr>
+        <th colspan="2" scope="row"><div align="center" ><input type="submit" name="button" id="button" value="Update"  class="btn btn-danger"/></div></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+
+{% endblock %}
